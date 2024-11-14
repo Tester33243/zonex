@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zonex</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Tooted</h1>
+    <div class="product-container">
+        <!-- Product Card 1 with Color Selection -->
+        <div class="product-card">
+            <img id="product-image" src="" alt="Pro6-White" style="display: none;"> <!-- Image initially hidden -->
+            <h2>Zonex Pro6</h2>
+            <p>Lühikirjeldus tootest 1.</p>
+            <!-- Color Selection Button and Dropdown -->
+            <button onclick="toggleColorOptions()">Valige värv</button>
+            <div id="color-options" style="display: none;">
+                <label for="color-select">Värv:</label>
+                <select id="color-select" onchange="changeColor()">
+                    <option value="" disabled selected>Palun valige värv</option> <!-- Default Option -->
+                    <option value="white">Valge</option>
+                    <option value="pink">Roosa</option>
+                    <option value="blue">Sinine</option>
+                    <option value="black">Must</option>
+                </select>
+                <button onclick="hideColorOptions()">Sulge</button>
+            </div>
+        </div>
+        
+        <!-- Other Product Cards -->
+        <div class="product-card">
+            <img src="https://example.com/path/to/image2.jpg" alt="Toode 2">
+            <h2>Toode 2</h2>
+            <p>Lühikirjeldus tootest 2.</p>
+        </div>
+        <div class="product-card">
+            <img src="https://example.com/path/to/image3.jpg" alt="Toode 3">
+            <h2>Toode 3</h2>
+            <p>Lühikirjeldus tootest 3.</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to show or hide color options
+        function toggleColorOptions() {
+            const colorOptions = document.getElementById('color-options');
+            colorOptions.style.display = colorOptions.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Function to hide color options
+        function hideColorOptions() {
+            document.getElementById('color-options').style.display = 'none';
+        }
+
+        // Function to change the product image based on the selected color
+        function changeColor() {
+            const selectedColor = document.getElementById('color-select').value;
+            const productImage = document.getElementById('product-image');
+
+            // If the default value is selected, hide the image
+            if (selectedColor === "") {
+                productImage.style.display = "none"; // Hide image
+            } else {
+                // Update the product image based on selected color
+                if (selectedColor === 'white') {
+                    productImage.src = 'https://media.discordapp.net/attachments/1306634988795723849/1306635332749365319/IMG_5531.png?ex=6737627b&is=673610fb&hm=7fc777f9eed2fa247f06d234a699ded3aa9f83ebcdc26752dca7bd40dfbfeedf&=&format=webp&quality=lossless&width=648&height=606';
+                } else if (selectedColor === 'pink') {
+                    productImage.src = 'https://media.discordapp.net/attachments/1306634988795723849/1306635331801583666/IMG_5533.png?ex=6737627b&is=673610fb&hm=8980dd6de167b914a39bbb621a3ccfbf71659c261d26ed2e2fd86f6f1b5c1211&=&format=webp&quality=lossless&width=631&height=606';
+                } else if (selectedColor === 'blue') {
+                    productImage.src = 'https://media.discordapp.net/attachments/1306634988795723849/1306635332090855434/IMG_5532.png?ex=6737627b&is=673610fb&hm=a5aafb3cdd7169e96ff46b38f5b68f14f82c6dfddd4da6a45f8a07d3b72783f4&=&format=webp&quality=lossless&width=651&height=606';
+                } else if (selectedColor === 'black') {
+                    productImage.src = 'https://media.discordapp.net/attachments/1306634988795723849/1306635333085167627/IMG_5530.png?ex=6737627b&is=673610fb&hm=c062dab9014c0e619809f53875f1c9ea00f38d1a19bd818049d2cb14580de230&=&format=webp&quality=lossless&width=622&height=606';
+                }
+
+                productImage.style.display = "block"; // Show image after selecting a color
+            }
+        }
+    </script>
+
+</body>
+</html>
